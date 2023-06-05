@@ -1,0 +1,49 @@
+@font-face {
+	font-family: Montserrat;
+	src: url(./fonts/Montserrat-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.counter {
+    text-align: center;
+}
+
+.counter h1 {
+    color: black;
+    font: 900 4.5rem 'Montserrat';
+    margin-bottom: 50px;
+}
+
+.counter .countdown-item {
+    color: black;
+    width: 150px;
+    height: 150px;
+    margin: 0 15px;
+    text-align: center;
+    display: inline-block;
+    box-shadow: 1px 1px 1px rgb(192, 192, 192);
+    
+}
+
+.counter .countdown-item span {
+    font: 800 4.5rem 'Roboto';
+}
+
+.counter .countdown-item div {
+    font: 500 1.5rem 'Montserrat';
+}
+

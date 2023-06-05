@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CountDown Timer in Javascript</title>
+
+		<!-- CSS  -->
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body>
+		<div class="counter">
+			<h1>CountDown Timer!</h1>
+			<div class="countdown-item">
+				<span class="days">00</span>
+				<div>Days</div>
+			</div>
+			<div class="countdown-item">
+				<span class="hours">00</span>
+				<div>Hours</div>
+			</div>
+			<div class="countdown-item">
+				<span class="minutes">00</span>
+				<div>Minutes</div>
+			</div>
+			<div class="countdown-item">
+				<span class="seconds">00</span>
+				<div>Seconds</div>
+			</div>
+		</div>
+
+		<!-- JS File -->
+		<script>
+			var endtime = new Date(Date.parse(new Date()) + 2 * 24 * 60 * 60 * 1000);
+
+			initializeClock(endtime);
+
+			function initializeClock(endtime) {
+				var clock = document.querySelector(".counter");
+				var daysSpan = clock.querySelector(".days");
+				var hoursSpan = clock.querySelector(".hours");
+				var minutesSpan = clock.querySelector(".minutes");
+				var secondsSpan = clock.querySelector(".seconds");
+
+				function updateClock() {
+					var t = getendtime(endtime);
+
+					daysSpan.innerHTML = t.days;
+					hoursSpan.innerHTML = ("0" + t.hours).slice(-2);
+					minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
+					secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
+
+					if (t.total <= 0) {
+						clearInterval(timeInterval);
+					}
+				}
+
+				updateClock();
+				var timeInterval = setInterval(updateClock, 1000);
+			}
+
+			function getendtime(endtime) {
+				var t = Date.parse(endtime) - Date.parse(new Date());
+				var seconds = Math.floor((t / 1000) % 60);
+				var minutes = Math.floor((t / 1000 / 60) % 60);
+				var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+				var days = Math.floor(t / (1000 * 60 * 60 * 24));
+				return {
+					total: t,
+					days: days,
+					hours: hours,
+					minutes: minutes,
+					seconds: seconds,
+				};
+			}
+		</script>
+	</body>
+</html>
